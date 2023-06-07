@@ -1,0 +1,6 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./_variable";
+@import "./module/allmodules";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+// sass --watch src/sass/app.scss public/css/app.css  terminal
