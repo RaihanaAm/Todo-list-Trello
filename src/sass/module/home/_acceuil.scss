@@ -1,0 +1,23 @@
+
+.buttton{
+    background-color: violet;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    
+}
+.buttton:hover{
+    background-color: rgb(255, 63, 255);
+    cursor: pointer;
+
+}
+.htmll{
+    height: 100vh;
+}
