@@ -5,11 +5,16 @@ let contenu = document.querySelector(".downDiv");
 let modif_icon = document.querySelector("#modify");
 let check_icon = document.querySelector("#check");
 let delete_icon = document.querySelector("#delete");
-let option = document.querySelectorAll("option");  //tableau
-let select_all = option[0]
-let select_done = option[1];
+let selects = document.querySelector("select");
+let optionss = document.querySelectorAll("option");  //tableau
+let select_all = optionss[0]
+let select_done = optionss[1];
 let select_wait = document.querySelector("#wait");
 let select_deletede = document.querySelector("#deleted");
+
+
+let r = document.getElementById("selecy").options[2]
+console.log(r);
 
 // ************************ tableau vide
 let all_div = [];
@@ -80,29 +85,80 @@ const createDiv = () => {
 
     }
 };
+
+
+const selection = () => {
+
+    document.querySelector('#selecy').addEventListener("change", function()  {
+        if (this.value == "Done") {
+            for (let index = 0; index < all_div.length; index++) {
+                let done = all_div[index];
+                if (!done.classList.contains("green") || done.classList.contains("red")) {
+                    done.remove();
+                }
+            }
+        } else if (this.value == "All taches") {
+            for (let index = 0; index < all_div.length; index++) {
+                let done = all_div[index];
+                if (!done.classList.contains("red")) {
+                    document.querySelector("#downDiv").appendChild(done);
+                } else {
+                    done.remove();
+                }
+            }
+
+        } else if (this.value == "wait") {
+            for (let index = 0; index < all_div.length; index++) {
+                let done = all_div[index];
+                if (done.classList.contains("green") || done.classList.contains("red")) {
+                    done.remove();
+                } else {
+                    document.querySelector("#downDiv").appendChild(done);
+                }
+            }
+
+        } else if (this.value == "Deleted") {
+            for (let index = 0; index < all_div.length; index++) {
+                let done = all_div[index];
+                if (!done.classList.contains("red")) {
+                    done.remove();
+                } else {
+                    document.querySelector("#downDiv").appendChild(done);
+                }
+            }
+
+        }
+    });
+
+}
 // *************************************************************** select fonction
 const select_item = () => {
 
     // &&&&&&& quand je click sur all
     select_all.addEventListener("click", () => {
-        
+
 
     });
     document.getElementById("test0").addEventListener("click", () => {
         for (let index = 0; index < all_div.length; index++) {
             let done = all_div[index];
-            if ( !done.classList.contains("red")) {
+            if (!done.classList.contains("red")) {
                 document.querySelector("#downDiv").appendChild(done);
             } else {
                 done.remove();
             }
         }
-        
-        
+
+
     });
     // &&&&&&& quand je click sur Done
 
-    document.getElementById("test").addEventListener("click", () => {
+
+
+
+
+
+    document.getElementById("selecy").options[1].addEventListener("", () => {
         for (let index = 0; index < all_div.length; index++) {
             let done = all_div[index];
             if (!done.classList.contains("green") || done.classList.contains("red")) {
@@ -127,52 +183,53 @@ const select_item = () => {
                 document.querySelector("#downDiv").appendChild(done);
             }
         }
-        
+
     });
-        // &&&&&&& quand je click sur delete
+    // &&&&&&& quand je click sur delete
 
-        select_deletede.addEventListener("click", () => {
+    select_deletede.addEventListener("click", () => {
 
-        });
-        document.getElementById("test2").addEventListener("click", () => {
-            for (let index = 0; index < all_div.length; index++) {
-                let done = all_div[index];
-                if (!done.classList.contains("red")) {
-                    done.remove();
-                } else {
-                    document.querySelector("#downDiv").appendChild(done);
-                }
+    });
+    document.getElementById("test2").addEventListener("click", () => {
+        for (let index = 0; index < all_div.length; index++) {
+            let done = all_div[index];
+            if (!done.classList.contains("red")) {
+                done.remove();
+            } else {
+                document.querySelector("#downDiv").appendChild(done);
             }
-            
-        });
-        // document.getElementById("test").addEventListener("click", () => {
-        //     alert("5")
-        //     for (let index = 0; index < div_deleted.length; index++) {
-        //         let done = div_deleted[index];
-        //         console.log("raih");
-        //         document.querySelector("#downDiv").appendChild(done);
-        //     }
+        }
 
-        // });
+    });
+    // document.getElementById("test").addEventListener("click", () => {
+    //     alert("5")
+    //     for (let index = 0; index < div_deleted.length; index++) {
+    //         let done = div_deleted[index];
+    //         console.log("raih");
+    //         document.querySelector("#downDiv").appendChild(done);
+    //     }
+
+    // });
 
 
-    }
+}
 
 
 
 // *********************** fonction  icons
 const icons_check = () => {
-    };
+};
 
 
-    // ********************* tester******************************
-    button.addEventListener("click", createDiv);
-    // select_item();
-    // const sounds =()=>{
-    //     let audio =new Audio("start-13691.mp3");
-    //     audio.play()
-    // }
-    // sounds();
+// ********************* tester******************************
+button.addEventListener("click", createDiv);
+// select_item();
+// const sounds =()=>{
+//     let audio =new Audio("start-13691.mp3");
+//     audio.play()
+// }
+// sounds();
 
-    select_item()
+// select_item()
+selection()
 
