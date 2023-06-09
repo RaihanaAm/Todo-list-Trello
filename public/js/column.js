@@ -48,7 +48,7 @@ const new_tasks = () => {
                 if (icon_parent_task.classList.contains("new_task")) {
                     let modification = prompt("modify ur tache");
                     if (modification.length > 0) {
-                        icon_parent_task.innerHTML = modification + modify_task  + selection;
+                        icon_parent_task.innerHTML = modification + modify_task +delete_task + selection;
                     }
                 }
             }
