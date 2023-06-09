@@ -1,4 +1,4 @@
-
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&  instances &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 let input = document.querySelector("input");
 let button = document.querySelector("button");
 let contenu = document.querySelector(".downDiv");
@@ -11,22 +11,24 @@ let select_all = optionss[0]
 let select_done = optionss[1];
 let select_wait = document.querySelector("#wait");
 let select_deletede = document.querySelector("#deleted");
-
-
 let r = document.getElementById("selecy").options[2]
-console.log(r);
 
-// ************************ tableau vide
+
+
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& tableau &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 let all_div = [];
 let div_done = [];
 let div_wait = [];
 let div_deleted = [];
 
-// ************************************************************* fonction create div **********************
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& fonction &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+// ******* fonction create new  div **********************
 const createDiv = () => {
     let data = input.value
     if (data.length > 0) {
-        // ???????????????????????????????????????????????? create div + sa class +add icons
+        // ? create div + sa class +add icons
         let newDiv = document.createElement("div");
         newDiv.classList.add("tache");
         all_div.push(newDiv);
@@ -37,12 +39,12 @@ const createDiv = () => {
         newDiv.innerHTML = data + mdyI + cheI + delI;
         document.querySelector("#downDiv").appendChild(newDiv);   // add div to page
         input.value = "";
-        all_div.push(newDiv); // push f tableu all div
+        all_div.push(newDiv); // push all new div
 
-        document.addEventListener("click", (e) => {
+        // ** icons
+        document.addEventListener("click", (e) => {   //*target event
             let iconParent = e.target.parentElement;
-            // let firstChild =e.target.firstChild
-            //? modify
+            //^icon modify
             if (e.target.classList.contains("modify")) {
                 if (iconParent.classList.contains("tache")) {
                     let modification = prompt("modify ur tache");
@@ -50,27 +52,29 @@ const createDiv = () => {
                         iconParent.innerHTML = modification + mdyI + cheI + delI;
                     }
                 }
-            } //? cheeck
+            }
+            //^icon cheeck
             else if (e.target.classList.contains("check")) {
                 if (!iconParent.classList.contains("green")) {
+                    iconParent.classList.add("green");
                     div_done.push(iconParent);
                     div_wait.pop(iconParent)
-                    console.log(div_done);
-                    console.log(div_wait);
-                    iconParent.classList.add("green");
+                    // console.log(div_done);
+                    // console.log(div_wait);
                 } else {
                     div_wait.push(iconParent);
                     iconParent.classList.remove("green");
                     div_done.pop(iconParent);
-                    console.log(div_done);
-                    console.log(div_wait);
+                    // console.log(div_done);
+                    // console.log(div_wait);
                 }
                 // iconParent.style.background= "green"
-            } //? delete
+            } //^icon delete
             else if (e.target.classList.contains("delete")) {
                 iconParent.classList.add("red");
                 div_deleted.push(iconParent);
                 iconParent.remove();
+                // ? check sure want to delete la tache
                 // iconParent.classList.remove("tache");
                 // iconParent.innerText = " ";
                 // console.log(div_deleted);
@@ -81,15 +85,14 @@ const createDiv = () => {
                 // }
             }
         })
-        console.log(div_deleted);
-
     }
 };
 
-
+// ************************************ fonction select taches *********
 const selection = () => {
 
-    document.querySelector('#selecy').addEventListener("change", function()  {
+    document.querySelector('#selecy').addEventListener("change", function () {
+        // ^select done
         if (this.value == "Done") {
             for (let index = 0; index < all_div.length; index++) {
                 let done = all_div[index];
@@ -97,7 +100,9 @@ const selection = () => {
                     done.remove();
                 }
             }
-        } else if (this.value == "All taches") {
+        } // ^select all taches (all without deleted taches)
+
+        else if (this.value == "All taches") {
             for (let index = 0; index < all_div.length; index++) {
                 let done = all_div[index];
                 if (!done.classList.contains("red")) {
@@ -106,8 +111,8 @@ const selection = () => {
                     done.remove();
                 }
             }
-
-        } else if (this.value == "wait") {
+        }  // ^select wait (no done taches)
+        else if (this.value == "wait") {
             for (let index = 0; index < all_div.length; index++) {
                 let done = all_div[index];
                 if (done.classList.contains("green") || done.classList.contains("red")) {
@@ -116,8 +121,8 @@ const selection = () => {
                     document.querySelector("#downDiv").appendChild(done);
                 }
             }
-
-        } else if (this.value == "Deleted") {
+        }  // ^select deleted taches
+        else if (this.value == "Deleted") {
             for (let index = 0; index < all_div.length; index++) {
                 let done = all_div[index];
                 if (!done.classList.contains("red")) {
@@ -126,110 +131,11 @@ const selection = () => {
                     document.querySelector("#downDiv").appendChild(done);
                 }
             }
-
         }
     });
-
 }
-// *************************************************************** select fonction
-const select_item = () => {
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& calles les action + fonctions &&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    // &&&&&&& quand je click sur all
-    select_all.addEventListener("click", () => {
-
-
-    });
-    document.getElementById("test0").addEventListener("click", () => {
-        for (let index = 0; index < all_div.length; index++) {
-            let done = all_div[index];
-            if (!done.classList.contains("red")) {
-                document.querySelector("#downDiv").appendChild(done);
-            } else {
-                done.remove();
-            }
-        }
-
-
-    });
-    // &&&&&&& quand je click sur Done
-
-
-
-
-
-
-    document.getElementById("selecy").options[1].addEventListener("", () => {
-        for (let index = 0; index < all_div.length; index++) {
-            let done = all_div[index];
-            if (!done.classList.contains("green") || done.classList.contains("red")) {
-                done.remove();
-            } else {
-                document.querySelector("#downDiv").appendChild(done);
-            }
-        }
-
-
-    });
-    // &&&&&&& quand je click sur Wait
-
-    select_wait.addEventListener("click", () => {
-    });
-    document.getElementById("test1").addEventListener("click", () => {
-        for (let index = 0; index < all_div.length; index++) {
-            let done = all_div[index];
-            if (done.classList.contains("green") || done.classList.contains("red")) {
-                done.remove();
-            } else {
-                document.querySelector("#downDiv").appendChild(done);
-            }
-        }
-
-    });
-    // &&&&&&& quand je click sur delete
-
-    select_deletede.addEventListener("click", () => {
-
-    });
-    document.getElementById("test2").addEventListener("click", () => {
-        for (let index = 0; index < all_div.length; index++) {
-            let done = all_div[index];
-            if (!done.classList.contains("red")) {
-                done.remove();
-            } else {
-                document.querySelector("#downDiv").appendChild(done);
-            }
-        }
-
-    });
-    // document.getElementById("test").addEventListener("click", () => {
-    //     alert("5")
-    //     for (let index = 0; index < div_deleted.length; index++) {
-    //         let done = div_deleted[index];
-    //         console.log("raih");
-    //         document.querySelector("#downDiv").appendChild(done);
-    //     }
-
-    // });
-
-
-}
-
-
-
-// *********************** fonction  icons
-const icons_check = () => {
-};
-
-
-// ********************* tester******************************
 button.addEventListener("click", createDiv);
-// select_item();
-// const sounds =()=>{
-//     let audio =new Audio("start-13691.mp3");
-//     audio.play()
-// }
-// sounds();
-
-// select_item()
 selection()
 
