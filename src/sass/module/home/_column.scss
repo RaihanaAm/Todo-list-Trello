@@ -1,0 +1,51 @@
+// *************** en haut
+.haut{
+    height: 25vh;
+    margin-top: 20px;
+    input {
+        height: 30px;
+        width: 300px;
+        border-radius: 10px;
+        border: 1px solid gray;
+        margin-left: 500px;
+        margin-bottom: 20px;
+
+
+    }
+
+}
+
+
+// ***** en bas
+
+.all_col{
+    height: 70vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(245, 98, 189);
+    
+}
+.new_column{
+    height: 60vh;
+    width: 20vw;
+    border-radius: 20px;
+    margin-left: 15px;
+    background-color: rgb(15, 15, 15);
+    h1{
+        color: white;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+.new_task {
+    color: rgb(0, 0, 0);
+    height: 40px;
+    width: 18vw;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 13px;
+    margin-top: 9px;
+    background-color: rgb(252, 252, 252);
+
+}

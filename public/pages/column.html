@@ -1,15 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cplumn</title>
+    <title>Column</title>
     <link rel="stylesheet" href="../css/app.css">
 </head>
-<body>
-    
 
+<body>
+
+
+    <!-- *********************** element en  haut -->
+    <div class="haut" >
+        <div class="input_column">
+            <input type="text">
+            <button id="add_task"> add</button>
+        </div>
+
+        <div  class="d-flex align-items-center justify-content-evenly container mt-2">
+            <!-- <select id="select_column">
+                <option value="all_tasks" >All taches</option>
+                <option value="Done_tasks" >Done</option>
+                <option value="wait_tasks" >waiting</option>
+                <option value="Deleted-tasks" >Deleted</option>
+            </select> -->
+            <button class="btn_add_column">+ new column</button>
+        </div>
+        
+    </div>
+
+
+    <!-- *********************** element en bas -->
+    <!--  -->
+    <div class=" all_col " id="all_col"> <!--!! background pink -->
+
+        <div class="new_column " id="to_do">  <!--^  column li chad ga3 les task   -->
+            <h1 class="  ">To do</h1> 
+            <!-- <div class="new_task ">  ? new task  -->
+                
+                <!-- <i class="fa-solid fa-pen modify_task " style="color: #89b14a;" id=""> </i> -->
+                <!-- <i class="fa-sharp delete_task fa-solid fa-trash" style="color: #db0404;" id=""></i> -->
+                <!-- <select id="select_column">
+                    <option value="all_tasks" >All taches</option>
+                    <option value="Done_tasks" >Done</option>
+                    <option value="wait_tasks" >waiting</option>
+                    <option value="Deleted-tasks" >Deleted</option>
+                </select> -->
+                
+            <!-- </div> -->
+            
+        </div>
+
+
+        <div class="new_column " id="doing">
+            <h1 class="   mt-2">Doing</h1>
+            
+        </div>
+
+
+
+        <div class="new_column " id="donee">
+            <h1 class="   mt-2">Done</h1>
+            
+        </div>
+      
+
+
+    </div>
 
 
 
@@ -31,4 +90,5 @@
 
     <script type="module" src="../js/column.js"></script>
 </body>
+
 </html>

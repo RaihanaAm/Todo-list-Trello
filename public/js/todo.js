@@ -31,7 +31,7 @@ const createDiv = () => {
         // ? create div + sa class +add icons
         let newDiv = document.createElement("div");
         newDiv.classList.add("tache");
-        all_div.push(newDiv);
+        // all_div.push(newDiv);
         // newDiv.innerText = data ;
         let mdyI = `<i class="fa-solid fa-pen modify " style="color: #fafafa;" id="modify"> </i>`
         let cheI = `<i class="fa-solid check fa-circle-check" style="color: #006110;" id="check"></i>`
@@ -134,6 +134,9 @@ const selection = () => {
         }
     });
 }
+
+
+
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& calles les action + fonctions &&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 button.addEventListener("click", createDiv);
